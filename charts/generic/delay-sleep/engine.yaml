@@ -1,0 +1,21 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  generateName: delay-sleep-
+  namespace: default
+spec:
+  appinfo:
+    appns: default
+    applabel: "app=dummy"
+    appkind: deployment
+  engineState: active
+  chaosServiceAccount: litmus-admin
+  jobCleanUpPolicy: retain
+  experiments:
+    - name: delay-sleep
+      spec:
+        components:
+          env:
+            - name: DELAY_SECONDS
+              value: "5"
+

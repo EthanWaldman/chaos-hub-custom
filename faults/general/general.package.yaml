@@ -1,5 +1,5 @@
 ---
-packageName: kubernetes
+packageName: general
 faults:
   - name: pod-autoscaler
     CSV: pod-autoscaler.chartserviceversion.yaml

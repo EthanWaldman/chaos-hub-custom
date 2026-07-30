@@ -2,11 +2,11 @@
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChartServiceVersion
 metadata:
-  name: kubernetes
+  name: general
   version: 0.1.0
   annotations:
-    categories: Kubernetes
-    chartDescription: Injects kubernetes chaos experiment
+    categories: General
+    chartDescription: Injects chaos experiment
     executionPlane: "kubernetes"
 spec:
   displayName: Kubernetes
@@ -19,8 +19,8 @@ spec:
   keywords:
     - Kubernetes
   maintainers:
-    - name: ksatchit
-      email: karthik.s@harness.io
+    - name: Ethan
+      email: Ethan.Waldman@balance-it-services.com
   minKubeVersion: 1.12.0
   links:
     - name: Kubernetes Website

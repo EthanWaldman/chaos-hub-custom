@@ -1,21 +1,29 @@
+---
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  generateName: delay-sleep-
+  name: nginx-chaos
   namespace: default
 spec:
+  # It can be active/stop
+  engineState: 'active'
+  #ex. values: ns1:name=percona,ns2:run=nginx
+  auxiliaryAppInfo: ''
   appinfo:
-    appns: default
-    applabel: "app=dummy"
-    appkind: deployment
-  engineState: active
-  chaosServiceAccount: litmus-admin
-  jobCleanUpPolicy: retain
+    appns: ''
+    applabel: ''
+    appkind: ''
+  chaosServiceAccount: pod-autoscaler-sa
   experiments:
-    - name: delay-sleep
+    - name: pod-autoscaler
       spec:
         components:
           env:
-            - name: DELAY_SECONDS
-              value: "5"
+            # set chaos duration (in sec) as desired
+            - name: TOTAL_CHAOS_DURATION
+              value: '60'
+
+            # number of replicas to scale
+            - name: REPLICA_COUNT
+              value: '5'
 

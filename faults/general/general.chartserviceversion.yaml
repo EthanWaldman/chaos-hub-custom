@@ -9,15 +9,16 @@ metadata:
     chartDescription: Injects chaos experiment
     executionPlane: "kubernetes"
 spec:
-  displayName: Kubernetes
+  displayName: General
   categoryDescription: >
-    Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easier management and discovery. It will install all the experiments which can be used to inject chaos into containerized applications.
+    General is an open-source grouing for automating deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easier management and discovery. It will install all the experiments which can be used to inject chaos into containerized applications.
   faults:
     - name: pod-autoscaler
       description: It injects pod-autoscaler chaos in a Kubernetes pod.
       displayName: "Pod Autoscaler"
   keywords:
     - Kubernetes
+    - General
   maintainers:
     - name: Ethan
       email: Ethan.Waldman@balance-it-services.com

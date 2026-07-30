@@ -4,4 +4,7 @@ faults:
   - name: pod-autoscaler
     CSV: pod-autoscaler.chartserviceversion.yaml
     desc: "pod-autoscaler"
+  - name: delay-sleep
+    CSV: delay-sleep.chartserviceversion.yaml
+    desc: "delay-sleep"
 

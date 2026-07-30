@@ -16,6 +16,9 @@ spec:
     - name: pod-autoscaler
       description: It injects pod-autoscaler chaos in a Kubernetes pod.
       displayName: "Pod Autoscaler"
+    - name: delay-sleep
+      description: It injects a delay into a chaos workflow
+      displayName: "Delay"
   keywords:
     - Kubernetes
     - General
@@ -35,3 +38,4 @@ spec:
   icon:
     - url: https://github.com/litmuschaos/chaos-charts/blob/master/faults/kubernetes/icons/kubernetes.png
       mediatype: image/png
+

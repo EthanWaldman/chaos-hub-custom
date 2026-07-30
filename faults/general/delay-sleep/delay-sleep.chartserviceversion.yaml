@@ -1,0 +1,32 @@
+apiVersion: charts.litmuschaos.io/v1alpha1
+kind: ChartServiceVersion
+metadata:
+  name: delay-sleep
+spec:
+  displayName: Delay Sleep
+  categoryDescription: Generic
+  chartDescription: |
+    A simple custom chaos experiment that pauses execution for a configurable
+    number of seconds using a shell sleep command.
+  keywords:
+    - Kubernetes
+    - Generic
+    - Delay
+    - Sleep
+    - Custom
+  platforms:
+    - Kubernetes
+  maturity: alpha
+  provider:
+    name: Your Organization
+  maintainers:
+    - name: Your Name
+      email: your-email@example.com
+  minKubeVersion: 1.19.0
+  links:
+    - name: Repository
+      url: https://github.com/your-org/your-chaoshub-repo
+  icon:
+    url: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/icons/litmus.svg
+  version: 0.1.0
+

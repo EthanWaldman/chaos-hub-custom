@@ -60,7 +60,7 @@ spec:
     imagePullPolicy: Always
     args:
       - -c
-      - sleep ${SLEEP_TIME}
+      - echo "sleep for ${SLEEP_TIME} seconds..." && sleep ${SLEEP_TIME}
     command:
       - /bin/bash
     env:

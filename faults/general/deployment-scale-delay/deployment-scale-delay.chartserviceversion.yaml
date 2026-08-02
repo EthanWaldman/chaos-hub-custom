@@ -1,3 +1,4 @@
+---
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChartServiceVersion
 metadata:
@@ -5,50 +6,30 @@ metadata:
   version: 0.1.0
   annotations:
     categories: Kubernetes
-    vendor: Custom
-    support: internal
+    vendor: LitmusChaos
 spec:
   displayName: Deployment Scale Delay
-  categoryDescription: >
-    Scales a target Deployment to zero replicas, holds for a configurable
-    duration, then restores it to its original replica count. Used to
-    widen the downtime window beyond default ReplicaSet recovery speed,
-    so slower-polling probes (e.g. HTTP probes with >1s intervals) can
-    reliably detect the failure condition.
+  categoryDescription: |
+    This fault will scale down a deployment, pause for a delay period, then restart
   keywords:
-    - kubernetes
-    - deployment
-    - scale
-    - availability
-  maturity: alpha
+    - Kubernetes
+  platforms:
+    - GKE
+    - EKS
+    - Minikube
+    - AKS
   maintainers:
-    - name: "Ethan Waldman"
+    - name: Ethan Waldman
       email: ethan@balance-it-services.com
-  minKubeVersion: 1.24.0
-  provider:
-    name: Custom
+  chaosType: infra
+  minKubeVersion: 1.12.0
   labels:
     app.kubernetes.io/component: chartserviceversion
-    app.kubernetes.io/part-of: litmus
-    app.kubernetes.io/version: 0.1.0
+    app.kubernetes.io/version: 3.0.0
   links:
-    - name: Source Code
-      url: https://github.com/<your-org>/<your-chaos-hub-repo>/tree/master/charts/general/deployment-scale-delay
     - name: Documentation
-      url: https://github.com/<your-org>/<your-chaos-hub-repo>/tree/master/charts/general/deployment-scale-delay/README.md
+      url: https://litmuschaos.github.io/litmus/experiments/categories/contents
   icon:
-    - url: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/icons/litmus.svg
-      mediatype: image/png
-  faultDetails:
-    - name: deployment-scale-delay
-      csv: deployment-scale-delay.chartserviceversion.yaml
-      desc: >
-        Forces an extended downtime window on a target Deployment by
-        scaling to zero and holding, rather than deleting individual pods.
-      platforms:
-        - GKE
-        - Kubernetes
-      chaosType: infra
-  experiments:
-    - deployment-scale-delay
+    - url:
+      mediatype: ""
 

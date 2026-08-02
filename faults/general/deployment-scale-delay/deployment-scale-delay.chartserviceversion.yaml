@@ -37,11 +37,11 @@ spec:
     - name: Documentation
       url: https://github.com/<your-org>/<your-chaos-hub-repo>/tree/master/charts/general/deployment-scale-delay/README.md
   icon:
-    - url: ./icons/deployment-scale-delay.png
+    - url: https://raw.githubusercontent.com/litmuschaos/chaos-charts/master/icons/litmus.svg
       mediatype: image/png
   faultDetails:
     - name: deployment-scale-delay
-      csv: deployment-scale-delay-chartserviceversion.yaml
+      csv: deployment-scale-delay.chartserviceversion.yaml
       desc: >
         Forces an extended downtime window on a target Deployment by
         scaling to zero and holding, rather than deleting individual pods.

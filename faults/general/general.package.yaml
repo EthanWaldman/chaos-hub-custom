@@ -8,6 +8,6 @@ faults:
     CSV: delay-sleep.chartserviceversion.yaml
     desc: "delay-sleep"
   - name: deployment-scale-delay
-    CSV: deployment-scale-delay/deployment-scale-delay-chartserviceversion.yaml
+    CSV: deployment-scale-delay/deployment-scale-delay.chartserviceversion.yaml
     desc: "Scales a Deployment to zero, holds, then restores original replica count"
 

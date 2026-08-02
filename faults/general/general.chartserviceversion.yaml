@@ -19,6 +19,9 @@ spec:
     - name: delay-sleep
       description: It injects a delay into a chaos workflow
       displayName: "Delay"
+    - name: deployment-scale-delay
+      description: Scales a Deployment to zero, holds, then restores original replica count
+      displayName: "Deployment Scale with Delay"
   keywords:
     - Kubernetes
     - General

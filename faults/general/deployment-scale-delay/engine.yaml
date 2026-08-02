@@ -1,0 +1,38 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: deployment-scale-delay-engine
+  namespace: lab1
+spec:
+  appinfo:
+    appns: 'bookinfo'
+    applabel: 'app=productpage'
+    appkind: 'deployment'
+  engineState: 'active'
+  chaosServiceAccount: chaos-sa
+  experiments:
+    - name: deployment-scale-delay
+      spec:
+        components:
+          env:
+            - name: TARGET_DEPLOY
+              value: 'productpage-v1'
+            - name: APP_NS
+              value: 'bookinfo'
+            - name: TOTAL_CHAOS_DURATION
+              value: '30'
+        probe:
+          - name: 'http-probe'
+            type: 'httpProbe'
+            mode: 'Continuous'
+            runProperties:
+              probeTimeout: 1
+              interval: 1
+              retry: 1
+            httpProbe/inputs:
+              url: 'http://bookinfo.balance-it-services.net/'
+              method:
+                get:
+                  criteria: '=='
+                  responseCode: '200'
+

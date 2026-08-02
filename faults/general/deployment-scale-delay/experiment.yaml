@@ -1,0 +1,53 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosExperiment
+metadata:
+  name: deployment-scale-delay
+  labels:
+    name: deployment-scale-delay
+    app.kubernetes.io/part-of: litmus
+    app.kubernetes.io/component: chaosexperiment
+    app.kubernetes.io/version: 0.1.0
+spec:
+  definition:
+    scope: Namespaced
+    permissions:
+      - apiGroups: ["apps"]
+        resources: ["deployments", "deployments/scale"]
+        verbs: ["get", "list", "patch", "update"]
+      - apiGroups: [""]
+        resources: ["pods"]
+        verbs: ["get", "list"]
+      - apiGroups: ["litmuschaos.io"]
+        resources: ["chaosresults", "chaosresults/finalizers"]
+        verbs: ["create", "get", "update", "patch", "delete", "list"]
+      - apiGroups: ["litmuschaos.io"]
+        resources: ["chaosengines", "chaosexperiments"]
+        verbs: ["get", "list", "watch", "patch", "update"]
+      - apiGroups: [""]
+        resources: ["events"]
+        verbs: ["create", "get", "list", "patch", "update"]
+      - apiGroups: [""]
+        resources: ["pods/log"]
+        verbs: ["get", "list", "watch"]
+      - apiGroups: ["batch"]
+        resources: ["jobs"]
+        verbs: ["create", "get", "list", "delete", "deletecollection"]
+    image: "us-central1-docker.pkg.dev/leafy-brace-198702/litmus-images/deployment-scale-delay:latest"
+    imagePullPolicy: Always
+    command:
+      - /bin/bash
+    args:
+      - /scale-down-delay.sh
+    env:
+      - name: TOTAL_CHAOS_DURATION
+        value: "30"
+      - name: TARGET_DEPLOY
+        value: ""
+      - name: APP_NS
+        value: ""
+    labels:
+      name: deployment-scale-delay
+      app.kubernetes.io/part-of: litmus
+      app.kubernetes.io/component: experiment-job
+      app.kubernetes.io/version: 0.1.0
+
